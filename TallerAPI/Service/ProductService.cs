@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using TallerAPI.Data;
 using TallerAPI.Models;
 
@@ -7,7 +8,7 @@ namespace TallerAPI.Service
     public class ProductService : IProductService
     {
         private readonly StoreDbContext _context;
-        private object _productService;
+        
 
         public ProductService(StoreDbContext context)
         {
@@ -41,12 +42,12 @@ namespace TallerAPI.Service
         }
         public ProductEntity GetProductById(int id)
         {
-            return _context.Product.Find(id);
+            return _context.Products.Find(id);
         }
         public List<ProductEntity> GetAllProducts()
         {
             
-            return _context.Product.ToList();
+            return _context.Products.ToList();
         }
 
 

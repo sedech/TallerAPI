@@ -6,8 +6,7 @@ namespace TallerAPI.Data
 {
     public class StoreDbContext : DbContext
     {
-        public class Dbset<T>
-        {
+        
             internal ProductModel Find(int id)
             {
                 throw new NotImplementedException();
@@ -27,10 +26,10 @@ namespace TallerAPI.Data
             {
                 throw new NotImplementedException();
             }
-        }
+      
         public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options) { }
 
-        public Dbset<ProductEntity> Product { get; set; }
-        public Dbset<ProductModel> Products { get; set; }  
+        public DbSet<ProductEntity> Products { get; set; }
+        //public Dbset<ProductModel> Products { get; set; }  
     }
 }
