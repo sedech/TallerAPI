@@ -22,7 +22,7 @@ namespace TallerAPI.Service
         // crud
 
         public void CreateProduct(ProductModel product)
-        {
+        {                                                          
             ProductEntity productEntity = new()
             {
                 Name = product.Name,
@@ -39,6 +39,7 @@ namespace TallerAPI.Service
         {
             ProductEntity productToDelete = this.GetProductById(id);    
             _context.Products.Remove(productToDelete);
+            _context.SaveChanges();
         }
         public ProductEntity GetProductById(int id)
         {

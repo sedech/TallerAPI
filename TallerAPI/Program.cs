@@ -2,10 +2,7 @@ using TallerAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using TallerAPI.Service;
 
-internal class Program
-{
-    private static void Main(string[] args)
-    {
+
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -20,14 +17,14 @@ internal class Program
               {
                   
                 options.UseSqlServer(builder.Configuration.GetConnectionString("StoreConnection"));
-              }
-            );
+              });
+            
         /*
           .AddTransient es un método de extensión utilizado para registrar servicios transitorios 
         en la configuración de la inyección de dependencias en ASP.NET Core.
          */
            //tiempo de vida que da a la interfaz
-        builder.Services.AddTransient<ProductService, ProductService>();
+        builder.Services.AddTransient<IProductService, ProductService>();
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -44,5 +41,4 @@ internal class Program
         app.MapControllers();
 
         app.Run();
-    }
-}
+   

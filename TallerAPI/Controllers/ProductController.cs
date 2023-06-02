@@ -25,11 +25,26 @@ namespace TallerAPI.Controllers
           }
                                                                    
         [HttpPost]
-        public IActionResult CreateProduct(ProductModel product)
+        public IActionResult CreateProduct([FromBody] ProductModel product)
         {
             _productService.CreateProduct(product);
             return Ok(); //Ok devolver un cod 200
         }
+        
+        [HttpDelete]
+        public IActionResult DeleteProduct([FromQuery] int id)
+        {
+            _productService.DeleteProduct(id);
+            return Ok();
+        }
 
+        [HttpGet]
+        [Route("getProduct/{id}")]
+        public IActionResult GetProduct(int id)
+        {
+            ProductEntity product = _productService.GetProductById(id);  
+            return Ok(product);
+        }
+        
     }
 }
